@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Fasilitas Kesehatan Sleman</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <!--Leaflet CSS & JS-->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.0/dist/leaflet.css" /> 
+    <script src="https://unpkg.com/leaflet@1.3.0/dist/leaflet.js"></script> 
+
+    <!--Bootstrap-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" 
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" 
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+    <style> 
+     
+      #map {
+        height: 400px;
+        width: 1300px;
+      }
+      .row {margin-top: 30px;}
+      /*Button style*/
+      .btn {
+        background-color: darkorange;
+        padding: 10px;
+        margin: 20px; }
+      /*Nav Bar*/
+      .alert {
+        background-color: rgb(254, 224, 187);
+        color: rgb(51, 54, 59); ; }
+      /*Agar button di tengah*/
+      #container{
+        text-align: center;
+        
+      }
+
+    </style>
+    
+  </head>
+  
+  <script src="shp/ADMIN_AR_DES_SLEMAN_Proj.js"></script> 
+  <script src="shp/JALAN_LN_ALL_SLEMAN_Proj.js"></script>
+
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #211844;">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">FKS</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+              <a class="nav-link" href="#">HOME</a>
+              <a class="nav-link" href="#">CONTACT</a>
+              <a class="nav-link" href="#">ABOUT</a>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </div>
+    
+    <div class="container">
+        <div class="row border" >
+            <div class="col-sm-12 text-center">
+                <h1>FASILITAS KESEHATAN SLEMAN</kbd></h1>
+                <h6>NNUNINU AMBULANCE </h6>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row border" >
+          <div class="col-sm-12 text-center">
+            <div id="map"></div>
+            
+        </div>
+      <div class="container">
+        <div class="row border" >
+        </div>
+        <div id="container">
+          <a class="btn btn-dark" href="spatialprogramming_web_gsl2021_ForStudent_Final/Tugas.html" role="button" >WEB GIS</a>
+          <a class="btn btn-dark" href="map_wms_wfs_spatial_query.html" role="button">OSM</a>
+          <a class="btn btn-dark" href="crud.html" role="button">CRUD</a>
+        </div>
+      </div>
+      
+      
+            <div class="col-sm-12">
+                <div class="alert alert-success" role="alert">
+                    <h4 class="alert-heading"><b>Sub Title UWU</b></h4>
+                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Necessitatibus provident possimus quaerat ducimus unde cupiditate aperiam deserunt. Architecto officia ex dignissimos itaque quasi! Facilis esse quas a saepe. Delectus, aperiam.</p>
+                    <hr>
+                    <p class="mb-0">Whenever you need to, access this WEB GIS to help you uwu</p>
+               
+       
+      </div>
+    </div>
+
+    <br>
+
+    <div class="contentbar aem-GridColumn aem-GridColumn--default--12">
+      <link rel="stylesheet" href="/etc.clientlibs/esri-sites/components/content/contentbar/clientlibs.14fddfe32b345e1adb60498fe116090e.css" type="text/css">
+      <script src="/etc.clientlibs/esri-sites/components/content/contentbar/clientlibs.js"></script>
+              <section theme="dark" class="contentbar light-mode calcite-theme-light alignleft calcite-animate calcite-animate_in-up" style="background-color: #D1E7DD;" data-animation="calcite-animate_in-up">
+          <div class="grid-container">
+                  <div class="column-10 tablet-column-10 phone-column-6 leader-2 trailer-2">
+              <div>
+                  <div class="richtext-container text-center">
+                      <div class="font-size-1 "><p>
+                          Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit ipsam beatae quas, eaque, molestiae laboriosam sed quisquam ea quaerat asperiores veritatis saepe. Impedit repellat minima voluptatibus aspernatur officia delectus fugit.
+                      </p>
+                      </div>
+                  </div>
+              </div>
+                  </div>
+        </div>
+          </section>
+    </div>
+
+  </body>
+
+<script>
+    var map = L.map("map").setView([-7.696499942818468, 110.38675628684814], 11); // mendefinsikan variable map dengan settingan tampilan pusat pada koordinat tertentu
+    var basemap1 = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '<a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> | <a href="DIVSIGUGM" target="_blank">DIVSIG UGM</a>' //menambahkan base map 1//
+    });
+
+    var basemap2 = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {
+        attribution: 'Tiles &copy; Esri | <a href="Latihan WebGIS" target="_blank">DIVSIG UGM</a>' //menambahkan base map 2//
+    });
+    var basemap3 = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+        attribution: 'Tiles &copy; Esri | <a href="Lathan WebGIS" target="_blank">DIVSIG UGM</a>' //menambahkan base map 3//
+    });
+    var basemap4 = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/NatGeo_World_Map/MapServer/tile/{z}/{y}/{x}', {
+        attribution: 'Tiles &copy; Esri &mdash; National Geographic, Esri, DeLorme, NAVTEQ, UNEP-WCMC, USGS, NASA, ESA, METI, NRCAN, GEBCO, NOAA, iPC', //menambahkan base map 4//
+
+    });
+
+    basemap1.addTo(map); //menambahkan base map 1 sebagai basemap utama //
+
+    var stylearea = {
+      "color": "#303030",
+      "weight": 2,
+      "opacity": 0.65
+            };
+    var stylejalan = {
+      "color": "#FF661F",
+      "weight": 1.5,
+            };
+    
+    function popUp(f,l){
+        var out = [];
+        if (f.properties){
+            for(key in f.properties){
+                out.push(key+": "+f.properties[key]);
+            }
+            l.bindPopup(out.join("<br />"));
+        }
+    }
+
+    //Memvisualisasikan data area dengan pop up kecamatan //
+    var geojson = L.geoJson(dataarea, { 
+        onEachFeature: function (feature, layer) {
+            var popupText = "Kecamatan: " + feature.properties.KECAMATAN;
+            if (feature.properties.NAMOBJ) {
+                popupText += "<br/>Kelurahan: " + feature.properties.DESA;
+            }
+            layer.bindPopup(popupText);
+        },
+        style : stylearea
+    }).addTo(map);
+
+    //Memvisualisasikan data garis dengan pop up nama jalan //
+    var geojson = L.geoJson(datagaris, {
+        onEachFeature: function (feature, layer) {
+            var popupText = "Kecamatan: " + feature.properties.FUNGSI;
+            if (feature.properties.NAMOBJ) {
+                popupText += "<br/>Kelurahan: " + feature.properties.NAMA;
+            }
+            layer.bindPopup(popupText);
+        },
+    style : stylejalan
+    }).addTo(map);
+
+  </script>
+</html>
